@@ -66,9 +66,8 @@ class Ball():
 		self.y+=abs(self.yparams)*self.vel*self.diry
 	def check_collision(self,other):
 		
-		if self.x==other.x or self.x+self.side==other.x:
-			if self.y+self.side//2>=other.y and self.y+self.side//2<=other.y+other.height:
-				
+		if self.x==other.x or self.x+self.side==other.x:			
+			if (self.y+self.side//2>=other.y or abs(self.y+self.side//2-other.y)<=self.side//2) and (self.y+self.side//2<=other.y+other.height or abs(self.y+self.side//2-other.y+other.height)<=self.side//2):
 				angle_factor=self.y+self.side//2-(other.y+other.height//2)
 				self.yparams=angle_factor//5
 				try:
